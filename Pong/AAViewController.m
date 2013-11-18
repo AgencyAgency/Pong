@@ -44,6 +44,16 @@
         [ballView updatePositionWithPaddleViews:self.paddleViews];
     }
     
+    NSMutableSet *tempSet = [NSMutableSet set];
+    for (AABallView *ballView in self.balls) {
+        if (ballView.shouldBeDestroyed) {
+            [ballView removeFromSuperview];
+        } else {
+            [tempSet addObject:ballView];
+        }
+    }
+    self.balls = tempSet;
+    
     // Wait to do all the adding of balls after looping complete.
     // This avoids an error when you try to add a ball to the
     // set while still iterating through it.
@@ -131,12 +141,14 @@
 {
     self.bottomPlayerScore += 10;
     [self updateScores];
+    ballView.shouldBeDestroyed = YES;
 }
 
 - (void)ballViewDidHitBottom:(AABallView *)ballView
 {
     self.topPlayerScore += 10;
     [self updateScores];
+    ballView.shouldBeDestroyed = YES;
 }
 
 @end
