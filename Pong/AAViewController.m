@@ -12,23 +12,32 @@
 
 @interface AAViewController ()
 @property (strong, nonatomic) CADisplayLink *displayLink;
-@property (strong, nonatomic) NSMutableArray *balls;
+@property (strong, nonatomic) NSMutableSet *balls;
+@property (strong, nonatomic) NSMutableSet *paddleViews;
 @end
 
 @implementation AAViewController
 
-- (NSMutableArray *)balls
+- (NSMutableSet *)balls
 {
     if (!_balls) {
-        _balls = [NSMutableArray array];
+        _balls = [NSMutableSet set];
     }
     return _balls;
+}
+
+- (NSMutableSet *)paddleViews
+{
+    if (!_paddleViews) {
+        _paddleViews = [NSMutableSet set];
+    }
+    return _paddleViews;
 }
 
 - (void)tick:(CADisplayLink *)sender
 {
     for (AABallView *ballView in self.balls) {
-        [ballView updatePosition];
+        [ballView updatePositionWithPaddleViews:self.paddleViews];
     }
 }
 
@@ -57,6 +66,22 @@
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"embedPaddle"]) {
+        AAPaddleVC *paddleVC = segue.destinationViewController;
+        paddleVC.delegate = self;
+    }
+}
+
+
+#pragma mark - AAPadleVC delegate
+
+- (void)paddleVC:(AAPaddleVC *)paddleVC didLoadPaddleView:(UIView *)paddleView
+{
+    [self.paddleViews addObject:paddleView];
 }
 
 @end

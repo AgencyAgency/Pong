@@ -50,7 +50,7 @@
     [self.superview addConstraint:self.yConstraint];
 }
 
-- (void)updatePosition
+- (void)updatePositionWithPaddleViews:(NSSet *)paddleViews
 {
     CGPoint vel = self.velocity;
     if (CGRectGetMaxX(self.frame) >= CGRectGetMaxX(self.superview.bounds)) {
@@ -69,6 +69,19 @@
     } else if (CGRectGetMinY(self.frame) <= CGRectGetMinY(self.superview.bounds)) {
         // Bounce off the top wall:
         vel.y = ABS(vel.y);
+    }
+    
+    // Change velocity if hits a paddle
+    for (UIView *paddleView in paddleViews) {
+        CGRect paddleRect = [self.superview convertRect:paddleView.bounds
+                                               fromView:paddleView];
+        if (CGRectIntersectsRect(self.frame, paddleRect)) {
+            // Flip the vertical velocity
+            vel.y = -vel.y;
+            
+            // Only need to worry about one paddle collision.
+            break;
+        }
     }
     
     // Set new velocity

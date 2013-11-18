@@ -9,8 +9,8 @@
 #import "AAPaddleVC.h"
 
 @interface AAPaddleVC ()
-@property (weak, nonatomic) IBOutlet UIView *paddleView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *paddleXConstraint;
+@property (weak, nonatomic) IBOutlet UIView *paddleView;
 @end
 
 @implementation AAPaddleVC
@@ -19,6 +19,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    if (self.delegate && [self.delegate respondsToSelector:@selector(paddleVC:didLoadPaddleView:)]) {
+        [self.delegate paddleVC:self didLoadPaddleView:self.paddleView];
+    }
 }
 
 - (IBAction)panPaddle:(UIPanGestureRecognizer *)sender {

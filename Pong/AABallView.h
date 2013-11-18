@@ -10,5 +10,5 @@
 
 @interface AABallView : UIView
 - (void)setInitialPosition:(CGPoint)position;
-- (void)updatePosition;
+- (void)updatePositionWithPaddleViews:(NSSet *)paddleViews;
 @end

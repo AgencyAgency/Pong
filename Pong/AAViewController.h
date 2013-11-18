@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AAPaddleVC.h"
 
-@interface AAViewController : UIViewController
+@interface AAViewController : UIViewController <AAPaddleVCDelegate>
 
 @end
