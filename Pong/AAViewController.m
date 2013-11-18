@@ -18,6 +18,7 @@
 @property (strong, nonatomic) CADisplayLink *displayLink;
 @property (strong, nonatomic) NSMutableSet *balls;
 @property (strong, nonatomic) NSMutableSet *paddleViews;
+@property (strong, nonatomic) NSValue *ballCreationPoint;
 @end
 
 @implementation AAViewController
@@ -40,19 +41,16 @@
 
 - (void)tick:(CADisplayLink *)sender
 {
+    // Remove balls no longer in view:
+    self.balls = [NSMutableSet setWithSet:[self.balls objectsPassingTest:^BOOL(id obj, BOOL *stop) {
+        UIView *ballView = (UIView *)obj;
+        return (BOOL)ballView.superview;
+    }]];
+
+    // Move balls:
     for (AABallView *ballView in self.balls) {
         [ballView updatePositionWithPaddleViews:self.paddleViews];
     }
-    
-    NSMutableSet *tempSet = [NSMutableSet set];
-    for (AABallView *ballView in self.balls) {
-        if (ballView.shouldBeDestroyed) {
-            [ballView removeFromSuperview];
-        } else {
-            [tempSet addObject:ballView];
-        }
-    }
-    self.balls = tempSet;
     
     // Wait to do all the adding of balls after looping complete.
     // This avoids an error when you try to add a ball to the
@@ -61,6 +59,12 @@
     if (total > self.totalScore && total % 100 == 0) {
         [self addBallToDisplay];
         self.totalScore = total;
+    }
+    
+    // Add ball from tap:
+    if (self.ballCreationPoint) {
+        [self addBallToDisplayAtPosition:[self.ballCreationPoint CGPointValue]];
+        self.ballCreationPoint = nil;
     }
 }
 
@@ -105,8 +109,10 @@
 
 - (IBAction)actionAreaTapped:(UITapGestureRecognizer *)sender
 {
+    if (self.ballCreationPoint) return;
+    
     CGPoint tapPos = [sender locationInView:self.view];
-    [self addBallToDisplayAtPosition:tapPos];
+    self.ballCreationPoint = [NSValue valueWithCGPoint:tapPos];
 }
 
 
@@ -141,14 +147,14 @@
 {
     self.bottomPlayerScore += 10;
     [self updateScores];
-    ballView.shouldBeDestroyed = YES;
+    [ballView removeFromSuperview];
 }
 
 - (void)ballViewDidHitBottom:(AABallView *)ballView
 {
     self.topPlayerScore += 10;
     [self updateScores];
-    ballView.shouldBeDestroyed = YES;
+    [ballView removeFromSuperview];
 }
 
 @end

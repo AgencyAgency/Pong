@@ -17,7 +17,6 @@
 
 @interface AABallView : UIView
 @property (weak, nonatomic) id<AABallViewDelegate> delegate;
-@property (assign, nonatomic) BOOL shouldBeDestroyed;
 - (void)setInitialPosition:(CGPoint)position;
 - (void)updatePositionWithPaddleViews:(NSSet *)paddleViews;
 @end
