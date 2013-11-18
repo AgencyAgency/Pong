@@ -21,6 +21,7 @@
 		CF06248D183A11F6004FA9DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF06246F183A11F6004FA9DE /* UIKit.framework */; };
 		CF062495183A11F6004FA9DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF062493183A11F6004FA9DE /* InfoPlist.strings */; };
 		CF062497183A11F6004FA9DE /* PongTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF062496183A11F6004FA9DE /* PongTests.m */; };
+		CF0624A5183A14F8004FA9DE /* AAPaddleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0624A4183A14F8004FA9DE /* AAPaddleVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		CF062492183A11F6004FA9DE /* PongTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PongTests-Info.plist"; sourceTree = "<group>"; };
 		CF062494183A11F6004FA9DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CF062496183A11F6004FA9DE /* PongTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PongTests.m; sourceTree = "<group>"; };
+		CF0624A3183A14F8004FA9DE /* AAPaddleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPaddleVC.h; sourceTree = "<group>"; };
+		CF0624A4183A14F8004FA9DE /* AAPaddleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPaddleVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 				CF06247A183A11F6004FA9DE /* AAAppDelegate.h */,
 				CF06247B183A11F6004FA9DE /* AAAppDelegate.m */,
 				CF06247D183A11F6004FA9DE /* Main.storyboard */,
+				CF0624A3183A14F8004FA9DE /* AAPaddleVC.h */,
+				CF0624A4183A14F8004FA9DE /* AAPaddleVC.m */,
 				CF062480183A11F6004FA9DE /* AAViewController.h */,
 				CF062481183A11F6004FA9DE /* AAViewController.m */,
 				CF062483183A11F6004FA9DE /* Images.xcassets */,
@@ -250,6 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF0624A5183A14F8004FA9DE /* AAPaddleVC.m in Sources */,
 				CF06247C183A11F6004FA9DE /* AAAppDelegate.m in Sources */,
 				CF062482183A11F6004FA9DE /* AAViewController.m in Sources */,
 				CF062478183A11F6004FA9DE /* main.m in Sources */,
