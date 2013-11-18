@@ -6,9 +6,17 @@
 //  Copyright (c) 2013 Kyle Oba. All rights reserved.
 //
 
+@class AABallView;
+
 #import <UIKit/UIKit.h>
 
+@protocol AABallViewDelegate <NSObject>
+- (void)ballViewDidHitTop:(AABallView *)ballView;
+- (void)ballViewDidHitBottom:(AABallView *)ballView;
+@end
+
 @interface AABallView : UIView
+@property (weak, nonatomic) id<AABallViewDelegate> delegate;
 - (void)setInitialPosition:(CGPoint)position;
 - (void)updatePositionWithPaddleViews:(NSSet *)paddleViews;
 @end

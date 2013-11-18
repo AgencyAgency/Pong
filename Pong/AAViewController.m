@@ -7,10 +7,13 @@
 //
 
 #import "AAViewController.h"
-#import "AABallView.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface AAViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *bottomPlayerScoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *topPlayerScoreLabel;
+@property (assign, nonatomic) NSInteger bottomPlayerScore;
+@property (assign, nonatomic) NSInteger topPlayerScore;
 @property (strong, nonatomic) CADisplayLink *displayLink;
 @property (strong, nonatomic) NSMutableSet *balls;
 @property (strong, nonatomic) NSMutableSet *paddleViews;
@@ -51,6 +54,9 @@
                            forMode:NSDefaultRunLoopMode];
     
     [self addBallToDisplay];
+    
+    self.topPlayerScoreLabel.transform = CGAffineTransformMakeRotation(M_PI);
+    [self updateScores];
 }
 
 - (void)addBallToDisplay
@@ -60,6 +66,7 @@
     [self.view addSubview:ballView];
     [ballView setInitialPosition:CGPointMake(50.0, 100.0)];
     
+    ballView.delegate = self;
     [self.balls addObject:ballView];
 }
 
@@ -82,6 +89,27 @@
 - (void)paddleVC:(AAPaddleVC *)paddleVC didLoadPaddleView:(UIView *)paddleView
 {
     [self.paddleViews addObject:paddleView];
+}
+
+
+#pragma mark - AABallView delegate
+
+- (void)updateScores
+{
+    self.bottomPlayerScoreLabel.text = [NSString stringWithFormat:@"%08d", self.bottomPlayerScore];
+    self.topPlayerScoreLabel.text = [NSString stringWithFormat:@"%08d", self.topPlayerScore];
+}
+
+- (void)ballViewDidHitTop:(AABallView *)ballView
+{
+    self.bottomPlayerScore += 10;
+    [self updateScores];
+}
+
+- (void)ballViewDidHitBottom:(AABallView *)ballView
+{
+    self.topPlayerScore += 10;
+    [self updateScores];
 }
 
 @end

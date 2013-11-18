@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "AAPaddleVC.h"
+#import "AABallView.h"
 
-@interface AAViewController : UIViewController <AAPaddleVCDelegate>
+@interface AAViewController : UIViewController <AAPaddleVCDelegate, AABallViewDelegate>
 
 @end

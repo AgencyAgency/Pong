@@ -65,10 +65,16 @@
     if (CGRectGetMaxY(self.frame) >= CGRectGetMaxY(self.superview.bounds)) {
         // Bounce off the bottom wall:
         vel.y = -ABS(vel.y);
+        if (self.delegate && [self.delegate respondsToSelector:@selector(ballViewDidHitBottom:)]) {
+            [self.delegate ballViewDidHitBottom:self];
+        }
         
     } else if (CGRectGetMinY(self.frame) <= CGRectGetMinY(self.superview.bounds)) {
         // Bounce off the top wall:
         vel.y = ABS(vel.y);
+        if (self.delegate && [self.delegate respondsToSelector:@selector(ballViewDidHitTop:)]) {
+            [self.delegate ballViewDidHitTop:self];
+        }
     }
     
     // Change velocity if hits a paddle
