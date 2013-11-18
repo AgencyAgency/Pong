@@ -28,6 +28,34 @@
     return self;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 - (void)setInitialPosition:(CGPoint)position
 {
     self.xConstraint = [NSLayoutConstraint constraintWithItem:self
@@ -49,6 +77,37 @@
     [self.superview addConstraint:self.xConstraint];
     [self.superview addConstraint:self.yConstraint];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - (void)updatePosition
 {
@@ -91,6 +150,14 @@
     // Update the Y position of the ball:
     self.yConstraint.constant = pos.y;
 }
+
+
+
+
+
+
+
+
 
 - (void)setupSizeConstraints
 {

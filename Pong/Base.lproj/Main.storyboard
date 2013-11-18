@@ -12,7 +12,7 @@
                         <viewControllerLayoutGuide type="top" id="6hQ-eG-CCK"/>
                         <viewControllerLayoutGuide type="bottom" id="Vl1-KO-Dzx"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="Game Area View">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -40,11 +40,11 @@
                         <viewControllerLayoutGuide type="top" id="DZZ-KG-igv"/>
                         <viewControllerLayoutGuide type="bottom" id="6ha-2O-Ona"/>
                     </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jWN-qK-hSq">
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jWN-qK-hSq" userLabel="Paddle Container">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rs2-fo-vhq">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rs2-fo-vhq" userLabel="Paddle View">
                                 <rect key="frame" x="247" y="35" width="200" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -79,25 +79,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="866" y="314"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="IbP-dV-CRw">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="S7S-qK-u9R" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Zwo-AB-5da"/>
-                        <viewControllerLayoutGuide type="bottom" id="EW9-EF-8Lk"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7XK-0z-JR9">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1WV-mQ-fEO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
+            <point key="canvasLocation" x="960" y="334"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
