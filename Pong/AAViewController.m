@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *topPlayerScoreLabel;
 @property (assign, nonatomic) NSInteger bottomPlayerScore;
 @property (assign, nonatomic) NSInteger topPlayerScore;
+@property (assign, nonatomic) NSInteger totalScore;
 @property (strong, nonatomic) CADisplayLink *displayLink;
 @property (strong, nonatomic) NSMutableSet *balls;
 @property (strong, nonatomic) NSMutableSet *paddleViews;
@@ -41,6 +42,15 @@
 {
     for (AABallView *ballView in self.balls) {
         [ballView updatePositionWithPaddleViews:self.paddleViews];
+    }
+    
+    // Wait to do all the adding of balls after looping complete.
+    // This avoids an error when you try to add a ball to the
+    // set while still iterating through it.
+    NSInteger total = self.topPlayerScore + self.bottomPlayerScore;
+    if (total > self.totalScore && total % 100 == 0) {
+        [self addBallToDisplay];
+        self.totalScore = total;
     }
 }
 
