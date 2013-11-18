@@ -81,6 +81,24 @@
             </objects>
             <point key="canvasLocation" x="866" y="314"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="IbP-dV-CRw">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="S7S-qK-u9R" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zwo-AB-5da"/>
+                        <viewControllerLayoutGuide type="bottom" id="EW9-EF-8Lk"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7XK-0z-JR9">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1WV-mQ-fEO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
