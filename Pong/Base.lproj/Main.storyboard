@@ -24,6 +24,14 @@
                                     <segue destination="leS-4H-osn" kind="embed" identifier="embedPaddle" id="Aab-uo-KCj"/>
                                 </connections>
                             </containerView>
+                            <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c7E-3K-Egy">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="100"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="TT0-hX-Li8" kind="embed" identifier="embedPaddle" id="3GC-gg-HD5"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -80,6 +88,55 @@
                 </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="866" y="314"/>
+        </scene>
+        <!--PaddleVC-->
+        <scene sceneID="rbW-ey-2Rr">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="TT0-hX-Li8" customClass="AAPaddleVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o6a-2X-w7E"/>
+                        <viewControllerLayoutGuide type="bottom" id="Suw-Pe-DJS"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ofh-bg-kkG">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oRh-Q0-aFo">
+                                <rect key="frame" x="194" y="35" width="200" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="5u4-TN-EgZ"/>
+                                    <constraint firstAttribute="height" constant="30" id="Ytt-yL-IBw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.7401027666989981" blue="0.43392751530999152" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="oRh-Q0-aFo" firstAttribute="centerY" secondItem="ofh-bg-kkG" secondAttribute="centerY" id="It7-xd-vvq"/>
+                            <constraint firstItem="oRh-Q0-aFo" firstAttribute="leading" secondItem="ofh-bg-kkG" secondAttribute="leading" constant="194" id="UCc-lI-BsB"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="HLQ-1n-Vid" appends="YES" id="gWa-Wf-qU7"/>
+                        </connections>
+                    </view>
+                    <toolbarItems/>
+                    <connections>
+                        <outlet property="paddleView" destination="oRh-Q0-aFo" id="NIA-QV-1QL"/>
+                        <outlet property="paddleXConstraint" destination="UCc-lI-BsB" id="xUn-J4-4zd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SbI-sq-a7n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="HLQ-1n-Vid">
+                    <connections>
+                        <action selector="panPaddle:" destination="TT0-hX-Li8" id="czQ-Wz-zGI"/>
+                        <outlet property="delegate" destination="TT0-hX-Li8" id="RJz-hL-awN"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="858" y="10"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
