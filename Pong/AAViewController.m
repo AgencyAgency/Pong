@@ -59,21 +59,38 @@
     [self updateScores];
 }
 
-- (void)addBallToDisplay
+- (void)addBallToDisplayAtPosition:(CGPoint)position
 {
     AABallView *ballView = [[AABallView alloc] init];
     ballView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:ballView];
-    [ballView setInitialPosition:CGPointMake(50.0, 100.0)];
+    [ballView setInitialPosition:position];
     
     ballView.delegate = self;
     [self.balls addObject:ballView];
+}
+
+- (void)addBallToDisplay
+{
+    [self addBallToDisplayAtPosition:CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds))];
 }
 
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
 }
+
+
+#pragma mark - Actions
+
+- (IBAction)actionAreaTapped:(UITapGestureRecognizer *)sender
+{
+    CGPoint tapPos = [sender locationInView:self.view];
+    [self addBallToDisplayAtPosition:tapPos];
+}
+
+
+#pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

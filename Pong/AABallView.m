@@ -23,9 +23,18 @@
         // Initialization code
         [self setupSizeConstraints];
         self.backgroundColor = [UIColor magentaColor];
-        _velocity = CGPointMake(10.0, 10.0);
+        _velocity = [self randomVelocity];
     }
     return self;
+}
+
+- (CGPoint)randomVelocity
+{
+    CGFloat x = 10;
+    CGFloat y = 10;
+    if (arc4random()%10>5) x = -x;
+    if (arc4random()%10>5) y = -y;
+    return CGPointMake(x, y);
 }
 
 - (void)setInitialPosition:(CGPoint)position
